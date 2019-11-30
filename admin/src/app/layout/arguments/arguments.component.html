@@ -1,0 +1,44 @@
+<div [@routerTransition]>
+  <app-page-header [heading]="'Argumentos'" [icon]="'fa-table'"></app-page-header>
+  <div class="row">
+    <div class="col col-xl-12 col-lg-12">
+      <div class="card mb-3">
+        <div class="card-header">
+          <div style="display: flex; justify-content: space-between;">
+            <h4>Argumentos completos e Formalização</h4>
+            <a class="btn btn-sm btn-info" routerLink="/arguments/create">
+              <i class="fa fa-2x fa-plus"></i>
+            </a>
+          </div>
+        </div>
+        <div class="card-body table-responsive">
+          <table class="table">
+            <thead>
+              <tr scope="row">
+                <th scope="col">#</th>
+                <th scope="col">Descrição</th>
+                <th scope="col"  style="padding-left: 40px;">Formalização</th>
+                <th colspan="2">Ações</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of arguments;">
+                <th scope="row">{{item.id}}</th>
+                <td style="text-align: justify;width: 50%;">{{item.description}}</td>
+                <td  style="padding-left: 40px;">{{item.form}}</td>
+                <td>
+                  <a class="btn btn-sm btn-warning" routerLink="/arguments/view/{{item.id}}">
+                    <i class="fa fa-2x fa-eye"></i>
+                  </a>&nbsp;
+                  <a class="btn btn-sm btn-danger"   (click)="deleteArgument(item.id);">
+                    <i class="fa fa-2x fa-trash-o"></i>
+                  </a>
+                </td>        
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

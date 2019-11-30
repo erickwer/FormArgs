@@ -1,0 +1,45 @@
+<div [@routerTransition]>
+  <app-page-header [heading]="'Argumentos'" [icon]="'fa-table'"></app-page-header>
+  <div class="row">
+    <div class="col col-xl-12 col-lg-12">
+      <div class="card mb-3">
+        <div class="card-header">
+          <div style="display: flex; justify-content: space-between;">
+            <h4>Premissas, conclusão e formalização</h4>
+            <a class="btn btn-sm btn-info" routerLink="/arguments/view/{{argument_id}}/premise">
+              <i class="fa fa-2x fa-plus"></i>
+            </a>
+          </div>
+        </div>
+        <div class="card-body table-responsive">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Tipo</th>
+                <th>Descrição</th>
+                <th>Formalização</th>
+                <th>Letras Setenciais</th>
+                <th>Ações</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of premisses;">
+                <th scope="row">{{item.id}}</th>
+                <td>{{item.type == 'PREMISE'? 'Premissa' : 'Conclusão'}}</td>
+                <td>{{item.description}}</td>
+                <td>{{item.form}}</td>
+                <td>{{item.sentential_letters}}</td>
+                <td>
+                  <a class="btn btn-sm btn-danger" (click)="deletePremise(item.id);">
+                    <i class="fa fa-2x fa-trash-o"></i>
+                  </a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

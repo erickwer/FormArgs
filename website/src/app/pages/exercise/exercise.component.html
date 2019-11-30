@@ -1,0 +1,121 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card shadow mb-4">
+        <div class="card-header">
+          <h5 class="m-0 font-weight-bold text-primary">Exercício nível I</h5>
+        </div>
+        <div class="card-body">
+          <h5>Identifique e selecione a conclusão na sentença abaixo, logo após formalize cada um dos fragmentos:</h5><br>
+          <div class="row">
+            <div class="col-md-8">
+              <p>{{argument?.description}}</p>
+            </div>
+            <div class="col-md-2">
+              <p>Letras sentenciais</p>
+            </div>
+            <div class="col-md-2">
+              <p>Formalização</p>
+            </div>
+          </div>
+          <form [formGroup]="form">
+            <div formArrayName="items" *ngFor="let item of optionsArray.controls; let i = index;">
+              <div class="row">
+                <div class="col-md-8">
+                  <div class="form-group" [formGroupName]="i" (click)="validateConclusion(i)">
+                    <input formControlName="description" disabled="true" class="form-control hover-question"
+                      style="cursor: pointer;">
+                  </div>
+                </div>
+                <div class="col-md-2" [formGroupName]="i">
+                  <div class="form-group">
+                    <input formControlName="sentential_letters" disabled="true" class="form-control">
+                  </div>
+                </div>
+                <div class="col-md-2">
+                  <div class="form-group" [formGroupName]="i">
+                    <input formControlName="form" class="form-control">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalExemplo">
+            Ajuda
+          </button>
+          <!-- Modal -->
+          <div class="modal fade" id="modalExemplo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel"> Dicas para formalizar</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <p>Na formalização você precisa seguir a ordem das letras sentenciais fornecidas para cada fragmento
+                    do argumento. Todas as letras deve ser maiúsculas. Quando houver parenteses exibidos junto às letras sentenciais eles deverão ser utilizados na fomalização</p>
+                  <p>Os conectivos devem ser representados como mostra a tabela abaixo:</p>
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        <th scope="col">Conectivo</th>
+                        <th scope="col">Simbolo</th>
+                        <th scope="col">Representação</th>
+                        <th scope="col">Passo a passo</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <th scope="row">então...</th>
+                        <td>&rarr;</td>
+                        <td>-></td>
+                        <td>Menos (-) seguido de simbolo de maior (>)</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">se somente se</th>
+                        <td>&harr;</td>
+                        <td> &lt;-></td>
+                        <td>Menor que (&lt;), seguido de menos (-), seguido de maior que (>) </td>
+                      </tr>
+                      <tr>
+                        <th scope="row">e</th>
+                        <td>∧</td>
+                        <td>^</td>
+                        <td>Acento circunflexo (^)</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">ou</th>
+                        <td>v</td>
+                        <td>v</td>
+                        <td>Letra (v) minúscula</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">não</th>
+                        <td>~ ou ¬</td>
+                        <td>¬</td>
+                        <td>Símbolo de negação</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-2 offset-md-10">
+              <button class="btn btn-success" [disabled]="enableResponse()" (click)="sendResponse()">
+                <span>Responder</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

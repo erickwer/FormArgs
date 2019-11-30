@@ -1,0 +1,26 @@
+<div [@routerTransition]>
+  <app-page-header [heading]="'Argumento'" [icon]="'fa-table'"></app-page-header>
+  <div class="row">
+    <div class="col col-xl-12 col-lg-12">
+      <div class="card mb-3">
+        <div class="card-header">
+          <div style="display: flex; justify-content: space-between;">
+            <h4>Cadastrar argumento</h4>
+          </div>
+        </div>
+        <div class="card-body table-responsive">
+          <form [formGroup]="form" (ngSubmit)="doSubmit()">
+            <div class="form-group">
+              <input type="text" class="form-control" placeholder="Descrição" formControlName="description">
+            </div>
+            <div class="form-group">
+              <input type="text" class="form-control" placeholder="Formalização" formControlName="form">
+            </div>
+            <button type="reset" class="btn btn-warning" style="margin-right: 10px;">Limpar</button>
+            <button type="submit" class="btn btn-success" [disabled]="!form.valid">Salvar</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
