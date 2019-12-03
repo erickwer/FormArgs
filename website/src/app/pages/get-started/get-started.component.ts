@@ -4,7 +4,6 @@ import { ActivatedRoute } from '@angular/router';
 import { FormGroup, FormBuilder, FormArray, Validators } from '@angular/forms';
 import { HttpParams } from '@angular/common/http';
 import Swal from 'sweetalert2';
-import { ResponseService } from 'src/app/services/response.service';
 import { APIService } from 'src/app/services/api.service';
 
 @Component({
@@ -57,7 +56,6 @@ export class GetStartedComponent implements OnInit {
             })
           }
         });
-        
   }
 }
      

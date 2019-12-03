@@ -4,7 +4,6 @@ import { ActivatedRoute } from '@angular/router';
 import { FormGroup, FormBuilder, FormArray, Validators } from '@angular/forms';
 import { HttpParams } from '@angular/common/http';
 import Swal from 'sweetalert2';
-import { ResponseService } from 'src/app/services/response.service';
 import { APIService } from 'src/app/services/api.service';
 
 @Component({
@@ -27,7 +26,6 @@ export class ExerciseComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private argumentService: ArgumentService,
-    private responseService: ResponseService,
     private apiService: APIService,
     private route: ActivatedRoute) {
     this.usu_hash = this.getParamValueQueryString('usu_hash');
@@ -153,21 +151,12 @@ export class ExerciseComponent implements OnInit {
       });
     });
     if (count == this.argument.ArgumentPremises.length) {
-      const response = {
-        argument_id: this.argument_id,
-        token: this.usu_hash,
-        exe_hash: this.exe_hash,
-        time_spent: this.timer
-      }
-      this.responseService.add(response).then(result => {
-        if (!result.error) {
-          const data = {
-            exe_hash: this.exe_hash,
-            usx_completado: true,
-            token: this.usu_hash,
-            tempo_exercicio: this.timer
-          }
-          console.log(data);
+        const data = {
+          exe_hash: this.exe_hash,
+          usx_completado: true,
+          token: this.usu_hash,
+          tempo_exercicio: this.timer
+        }
           this.apiService.sendResponse(data,data.token).then(res => {
             if (res.status == false){
               Swal.fire({
@@ -178,8 +167,7 @@ export class ExerciseComponent implements OnInit {
             }
           });
         }
-      })
-    } else {
+     else {
       Swal.fire({
         icon: 'error',
         title: 'Oops...',
