@@ -138,14 +138,6 @@ export class ExerciseComponent implements OnInit {
 
   sendResponse() {
     let count = 0;
-    // this.responseService.getOne(this.argument_id.toString()).then(res =>{
-    //   if (res.data.Responses[0].exe_hash == this.exe_hash && res.data.Responses[0].token == this.usu_hash)
-    //   {
-    //     console.log("Já respondeu ")
-    //   }else if (res.data.Responses= []){
-        
-    //   }
-    // })
     this.argument.ArgumentPremises.map(item => {
       this.form.value.items.map(response => {
         if (item.id == response.id) {
@@ -176,14 +168,15 @@ export class ExerciseComponent implements OnInit {
             tempo_exercicio: this.timer
           }
           console.log(data);
-
           this.apiService.sendResponse(data,data.token).then(res => {
+            if (res.status == false){
+              Swal.fire({
+                icon: 'info',
+                title: 'Oops...',
+                text: res.mensagem
+              })
+            }
           });
-          Swal.fire({
-            icon: 'success',
-            title: 'Parabéns!',
-            text: 'Você acertou a resposta deste exercício!',
-          })
         }
       })
     } else {

@@ -49,12 +49,15 @@ export class GetStartedComponent implements OnInit {
         tempo_exercicio: this.timer
       }
         this.apiService.sendResponse(data,data.token).then(res => {
+          if (res.status == false){
+            Swal.fire({
+              icon: 'info',
+              title: 'Oops...',
+              text: res.mensagem
+            })
+          }
         });
-        Swal.fire({
-          icon: 'success',
-          title: 'Parabéns!',
-          text: 'Você concluiu o módulo de estudos!',
-      })
+        
   }
 }
      
