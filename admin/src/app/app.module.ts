@@ -9,6 +9,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuthGuard } from './shared';
 import { AuthService } from './service/auth.service';
+import { APIService } from './service/api.service';
 
 @NgModule({
   imports: [

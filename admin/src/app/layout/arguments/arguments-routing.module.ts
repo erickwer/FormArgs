@@ -4,6 +4,7 @@ import { ArgumentsComponent } from './arguments.component';
 import { CreateArgumentsComponent } from './create-argument/create-argument.component';
 import { ViewArgumentComponent } from './view-argument/view-argument.component';
 import { CreatePremiseComponent } from './create-premisse/create-premise.component';
+import { SendArgumentComponent } from './send-argument/send-argument.component';
 
 const routes: Routes = [
   {
@@ -17,6 +18,9 @@ const routes: Routes = [
   },
   {
     path: 'view/:id/premise', component: CreatePremiseComponent
+  },
+  {
+    path: 'send/:id', component: SendArgumentComponent
   }
 ];
 

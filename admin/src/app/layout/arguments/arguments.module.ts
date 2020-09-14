@@ -8,6 +8,7 @@ import { CreateArgumentsComponent } from './create-argument/create-argument.comp
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ViewArgumentComponent } from './view-argument/view-argument.component';
 import { CreatePremiseComponent } from './create-premisse/create-premise.component';
+import { SendArgumentComponent } from './send-argument/send-argument.component';
 
 @NgModule({
   imports: [
@@ -21,7 +22,8 @@ import { CreatePremiseComponent } from './create-premisse/create-premise.compone
     ArgumentsComponent,
     CreateArgumentsComponent,
     ViewArgumentComponent,
-    CreatePremiseComponent
+    CreatePremiseComponent,
+    SendArgumentComponent
   ]
 })
 export class ArgumentsModule { }

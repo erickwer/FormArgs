@@ -10,6 +10,7 @@ var authRouter = require('./routes/auth');
 var usersRouter = require('./routes/users');
 var argumentsRouter = require('./routes/arguments');
 var responsesRouter = require('./routes/responses');
+var apiLogicRouter = require ('./routes/responses');
 
 var app = express();
 
@@ -29,6 +30,7 @@ app.use('/auth', authRouter);
 app.use('/users', usersRouter);
 app.use('/arguments', argumentsRouter);
 app.use('/responses', responsesRouter);
+app.use('/apiLogic', apiLogicRouter)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -1,0 +1,25 @@
+<div [@routerTransition]>
+  <app-page-header [heading]="'Cadastrar Exercício na Plataforma Logic Live'" [icon]="'fa-table'"></app-page-header>
+  <div class="row">
+    <div class="col col-xl-12 col-lg-12">
+      <div class="card mb-3">
+        <div class="card-body table-responsive">
+          <form [formGroup]="form" (ngSubmit)="doSubmit()">
+           <div class="form-group">
+                <select class="form-control" formControlName="niv_codigo">
+                  <option value="" selected="true" disabled="true">Nível do Exercício </option>
+                  <option *ngFor="let item of levels | keyvalue; let i=index" value="{{item.value.niv_codigo}},{{item.value.rec_codigo}}">{{item.value.niv_nome}}</option>
+                </select>
+              </div>
+            <div class="form-group">
+              <input type="text" class="form-control" placeholder="Nome do Exercício " formControlName="exe_nome">
+            </div>
+            <button type="reset" class="btn btn-warning" style="margin-right: 10px;">Limpar</button>
+            <button type="submit" class="btn btn-success" [disabled]="!form.valid">Salvar</button>
+            <h1>{{url}}</h1>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
